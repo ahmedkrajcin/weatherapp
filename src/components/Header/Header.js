@@ -21,7 +21,7 @@ class Header extends Component {
 								<input type="radio" name="options" ></input>
 								&deg; C
       </label>
-							<label id="us" onClick={this.props.handleClick} className="btn btn-primary">
+							<label id="us" onClick={this.props.handleClick.bind(this)} className="btn btn-primary">
 								<input type="radio" name="options"></input>
 								&deg; F
       </label>

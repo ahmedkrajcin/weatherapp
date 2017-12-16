@@ -14,11 +14,7 @@ import snow from '../../images/snow.png';
 import wind from '../../images/wind.png';
 
 
-class TodayWeather extends Component {
-	_fahrenheitToCelcius = (data) => {
-		return (data - 32) * 5/9
-	};
-
+class HourlyWeather extends Component {
 	_getIcon(type) {
 		if (type === 'clear-day') {
 			return clearDay
@@ -69,19 +65,12 @@ class TodayWeather extends Component {
 		else
           return 'C'
 	};
-	_getUnitsWind(unit){
-		if(unit==='si')
-		return 'm/s'
-		else
-		  return 'mph'
-	};
 
 	render() {
-		console.log(this.props);
-		const {units} =this.props.dailyData.flags;
-		let allItems = this.props.dailyData.daily.data.map((result, id) => {
+		// const {units} =this.props.hourly.flags;
+		let allItems = this.props.hourlyData.hourly.data.map((result, id) => {
 			return (
-				<div key={id} className="col-md-3">
+				<div key={id} className="col-md-2">
 					<div className="element">
 						<div className="time">
 							<p>
@@ -93,7 +82,7 @@ class TodayWeather extends Component {
 						</div>
 						<div className="summary">
 							<p>
-								{result.summary} </p><h3><span>{parseFloat(result.temperatureMin).toFixed(0)}/{parseFloat(result.temperatureMax).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}	</span>
+								{result.summary} </p><h3><span>{parseFloat(result.temperatureMin).toFixed(0)}/{parseFloat(result.temperatureMax).toFixed(0)}<sup>o</sup>{this._getUnitsTemp('us')}	</span>
 							</h3>
 						</div>
 					</div>
@@ -111,4 +100,4 @@ class TodayWeather extends Component {
 	}
 }
 
-export default TodayWeather;
+export default HourlyWeather;
