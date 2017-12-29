@@ -68,7 +68,7 @@ class HourlyWeather extends Component {
 
 	render() {
 		const {units} =this.props.hourlyData.flags;
-		var size=12;
+		var size=1;
 		let allItems = this.props.hourlyData.hourly.data.map((result, id) => {
 			return (
 				<div key={id} className="col-md-2">
