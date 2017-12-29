@@ -67,14 +67,15 @@ class HourlyWeather extends Component {
 	};
 
 	render() {
-		// const {units} =this.props.hourly.flags;
+		const {units} =this.props.hourlyData.flags;
+		var size=12;
 		let allItems = this.props.hourlyData.hourly.data.map((result, id) => {
 			return (
 				<div key={id} className="col-md-2">
 					<div className="element">
 						<div className="time">
 							<p>
-								<i className="fa fa-clock-o" aria-hidden="true" /> {moment.unix(result.time).format('dddd')}
+								<i className="fa fa-clock-o" aria-hidden="true" /> {moment.unix(result.time).format('HH:mm')}
 							</p>
 						</div>
 						<div className="icon-container">
@@ -82,7 +83,7 @@ class HourlyWeather extends Component {
 						</div>
 						<div className="summary">
 							<p>
-								{result.summary} </p><h3><span>{parseFloat(result.temperatureMin).toFixed(0)}/{parseFloat(result.temperatureMax).toFixed(0)}<sup>o</sup>{this._getUnitsTemp('us')}	</span>
+								{result.summary} </p><h3><span>{parseFloat(result.temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}	</span>
 							</h3>
 						</div>
 					</div>
