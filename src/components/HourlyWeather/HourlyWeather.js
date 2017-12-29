@@ -68,14 +68,14 @@ class HourlyWeather extends Component {
 
 	render() {
 		const {units} =this.props.hourlyData.flags;
-		var size=1;
-		let allItems = this.props.hourlyData.hourly.data.map((result, id) => {
+		var size=12;
+		let allItems = this.props.hourlyData.hourly.data.slice(0,size).map((result, id) => {
 			return (
 				<div key={id} className="col-md-2">
 					<div className="element">
 						<div className="time">
 							<p>
-								<i className="fa fa-clock-o" aria-hidden="true" /> {moment.unix(result.time).format('HH:mm')}
+								<i className="fa fa-clock-o" aria-hidden="true" /> {moment.unix(result.time).format('HH:mm')} 
 							</p>
 						</div>
 						<div className="icon-container">

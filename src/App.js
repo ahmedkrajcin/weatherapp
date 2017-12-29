@@ -7,6 +7,7 @@ import HourlyWeather from './components/HourlyWeather';
 import CurrentPlace from './components/CurrentPlace';
 import axios from 'axios';
 import SwitchType from './components/SwitchType';
+import GoogleMap from './components/GoogleMap';
 
 const apiSecret = 'd8ab77870812de67277ae47d3e9bf83e';
 const apiUrl = `https://api.darksky.net/forecast/${apiSecret}`;
@@ -162,6 +163,8 @@ class App extends Component {
 							handleClick={this.handleClick} />
 						<CurrentPlace  {...this.state} />
 						<CurrentWeather currentWeather={this.state.data} />
+						
+
 
 						<div className="detailed-weather">
 							<SwitchType switchToDaily={this._switchToDaily} switchToHourly={this._switchToHourly} {...this.state} />

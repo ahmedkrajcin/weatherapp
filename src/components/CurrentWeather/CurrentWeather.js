@@ -80,6 +80,7 @@ class CurrentWeather extends Component {
 	render() {
 		const { icon, summary,temperature, apparentTemperature, humidity, windSpeed, pressure, uvIndex, precipProbability,time } = this.props.currentWeather.currently;
 		const humidity1=humidity*100;
+		const precip = precipProbability*100;
 		console.log(this.props);
 		
 		//const {summary}=this.props.currentWeather.hourly;
@@ -99,7 +100,7 @@ class CurrentWeather extends Component {
 							<li>Wind: {windSpeed} {this._getUnitsWind(units)}</li>
 							<li>Pressure: {pressure}mb</li>
 							<li>UV Index: {uvIndex}</li>
-							<li>Precipitation: {precipProbability} %</li>
+							<li>Precipitation: {precip} %</li>
 						</ul>
 					</div>
 				</div>
