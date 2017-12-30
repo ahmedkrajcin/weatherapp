@@ -7,7 +7,7 @@ import HourlyWeather from './components/HourlyWeather';
 import CurrentPlace from './components/CurrentPlace';
 import axios from 'axios';
 import SwitchType from './components/SwitchType';
-import GoogleMap from './components/GoogleMap';
+import StandardMap from './components/StandardMap';
 
 const apiSecret = 'd8ab77870812de67277ae47d3e9bf83e';
 const apiUrl = `https://api.darksky.net/forecast/${apiSecret}`;
@@ -27,7 +27,7 @@ class App extends Component {
 				flags: {}
 			},
 			active: 'daily',
-      place:'',
+			place: '',
 			inputValue: 'Sarajevo',
 			unitValue: 'auto',
 			lat: '0',
@@ -45,7 +45,7 @@ class App extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		
+
 		this._getGeoInfo(this.state.inputValue);
 
 		console.log(this.state.inputValue);
@@ -140,7 +140,7 @@ class App extends Component {
 	};
 
 	_switchToDaily() {
-		console.log('daly')
+		//console.log('daly')
 		this.setState({
 			active: 'daily'
 		})
@@ -163,7 +163,7 @@ class App extends Component {
 							handleClick={this.handleClick} />
 						<CurrentPlace  {...this.state} />
 						<CurrentWeather currentWeather={this.state.data} />
-						
+
 
 
 						<div className="detailed-weather">
@@ -175,7 +175,10 @@ class App extends Component {
 							{this.state.active === 'hourly' &&
 								<HourlyWeather hourlyData={this.state.data} />
 							}
+							<StandardMap {...this.state} />
+
 						</div>
+
 					</div>
 				</div>
 			</div>
