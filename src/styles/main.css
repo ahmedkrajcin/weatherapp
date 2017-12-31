@@ -5562,6 +5562,15 @@ header {
     color: #fff;
     font-size: 1.7em; }
 
+    .google-map{
+      
+      width: 60%; 
+      height: 60%;
+      
+    }
+    
+    
+
 .current-weather {
   text-align: center;
   margin: 50px auto;

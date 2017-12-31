@@ -15,7 +15,7 @@ import wind from '../../images/wind.png';
 class CurrentWeather extends Component {
 
 	_fahrenheitToCelcius = (data) => {
-		return (data - 32) * 5/9
+		return (data - 32) * 5 / 9
 	};
 
 	_getIcon(type) {
@@ -62,35 +62,35 @@ class CurrentWeather extends Component {
 			return partlyCloudyNight
 		}
 	};
-	_getUnitsTemp(unit){
-		if(unit==='us')
-		  return 'F'
+	_getUnitsTemp(unit) {
+		if (unit === 'us')
+			return 'F'
 		else
-          return 'C'
+			return 'C'
 	};
-	_getUnitsWind(unit){
-		if(unit==='si')
-		return 'm/s'
+	_getUnitsWind(unit) {
+		if (unit === 'si')
+			return 'm/s'
 		else
-		  return 'mph'
+			return 'mph'
 	};
 
-	
+
 
 	render() {
-		const { icon, summary,temperature, apparentTemperature, humidity, windSpeed, pressure, uvIndex, precipProbability,time } = this.props.currentWeather.currently;
-		const humidity1=humidity*100;
-		const precip = precipProbability*100;
+		const { icon, summary, temperature, apparentTemperature, humidity, windSpeed, pressure, uvIndex, precipProbability, time } = this.props.currentWeather.currently;
+		const humidity1 = humidity * 100;
+		const precip = precipProbability * 100;
 		console.log(this.props);
-		
+
 		//const {summary}=this.props.currentWeather.hourly;
-		const {units} =this.props.currentWeather.flags;
+		const { units } = this.props.currentWeather.flags;
 		return (
 			<div className="current-weather">
 				<div className="row">
 					<div className="col-sm-5">
 						<div className="icon-container">
-							<img src={this._getIcon(icon)} alt="Current Weather"/>
+							<img src={this._getIcon(icon)} alt="Current Weather" />
 						</div>
 					</div>
 
@@ -107,10 +107,10 @@ class CurrentWeather extends Component {
 				<div className="description">
 					<p className="ng-binding">
 						{summary} </p>
-						<p className="temperature" >	
-							{parseFloat(temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}  Real Feel {parseFloat(apparentTemperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}
-							
-            
+					<p className="temperature" >
+						{parseFloat(temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}  Real Feel {parseFloat(apparentTemperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}
+
+
 					</p>
 				</div>
 			</div>

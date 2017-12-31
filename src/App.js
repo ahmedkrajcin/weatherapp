@@ -30,8 +30,8 @@ class App extends Component {
 			place: '',
 			inputValue: 'Sarajevo',
 			unitValue: 'auto',
-			lat: '0',
-			lon: '0'
+			lat: '43.8562586',
+			lon: '18.4130763'
 		}
 		this._getWeatherInfo = this._getWeatherInfo.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -162,8 +162,15 @@ class App extends Component {
 							submit={this.handleSubmit}
 							handleClick={this.handleClick} />
 						<CurrentPlace  {...this.state} />
-						<CurrentWeather currentWeather={this.state.data} />
-
+						<div className="row">
+							<div className="col-sm-7">
+								<CurrentWeather currentWeather={this.state.data} />
+								</div>
+								<div className="col-sm-5">
+									<StandardMap {...this.state} />
+								</div>
+							
+						</div>
 
 
 						<div className="detailed-weather">
@@ -175,8 +182,7 @@ class App extends Component {
 							{this.state.active === 'hourly' &&
 								<HourlyWeather hourlyData={this.state.data} />
 							}
-							<StandardMap {...this.state} />
-
+							
 						</div>
 
 					</div>
