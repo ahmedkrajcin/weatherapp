@@ -8,6 +8,7 @@ import CurrentPlace from './components/CurrentPlace';
 import axios from 'axios';
 import SwitchType from './components/SwitchType';
 import StandardMap from './components/StandardMap';
+import Register from './components/Register';
 
 const apiSecret = 'd8ab77870812de67277ae47d3e9bf83e';
 const apiUrl = `https://api.darksky.net/forecast/${apiSecret}`;
@@ -31,7 +32,8 @@ class App extends Component {
 			inputValue: 'Sarajevo',
 			unitValue: 'auto',
 			lat: '43.8562586',
-			lon: '18.4130763'
+			lon: '18.4130763',
+			show: false
 		}
 		this._getWeatherInfo = this._getWeatherInfo.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -66,7 +68,11 @@ class App extends Component {
 		this._getWeatherInfo(this.state.lat, this.state.lon)
 		//console.log(this.state.unitValue);
 	}
-
+	handleClickReg() {
+		this.setState({
+			show: !this.state.show
+		});
+	}
 	_getBackground(type) {
 		if (type === 'clear-night' || type === 'partly-cloudy-night') {
 			return 'night'
@@ -101,7 +107,7 @@ class App extends Component {
 
 		const _this = this;
 
-		axios.get('http://maps.google.com/maps/api/geocode/json?address=' + cityName)
+		axios.get('http://maps.google.com/maps/api/geocode/json?address=' + cityName + '&language=en')
 			.then(function (response) {
 				_this.setState({
 					cityData: response.data,
@@ -165,11 +171,11 @@ class App extends Component {
 						<div className="row">
 							<div className="col-sm-7">
 								<CurrentWeather currentWeather={this.state.data} />
-								</div>
-								<div className="col-sm-5">
-									<StandardMap {...this.state} />
-								</div>
-							
+							</div>
+							<div className="col-sm-5">
+								<StandardMap {...this.state} />
+							</div>
+
 						</div>
 
 
@@ -182,7 +188,12 @@ class App extends Component {
 							{this.state.active === 'hourly' &&
 								<HourlyWeather hourlyData={this.state.data} />
 							}
-							
+
+						</div>
+						<div className="font-container">
+							<p  id="demo" onClick={() => this.handleClickReg()} >Rate and Comment</p>
+
+							{this.state.show && < Register/ >}
 						</div>
 
 					</div>

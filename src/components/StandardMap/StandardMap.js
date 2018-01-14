@@ -20,7 +20,7 @@ export class StandardMap extends Component {
 
   }
   mapClicked(e) {
-   console.log(event.latLng.lat());
+  // console.log(event.latLng.lat());
   
 
   }
