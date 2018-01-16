@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RateComment from '../RateComment';
+
 
 class Register extends Component {
 	getInitialState() {
@@ -29,6 +31,7 @@ class Register extends Component {
 						</div>
 					</div>
 				</form>
+				<RateComment/>
 			</div>
 		);
 	}
