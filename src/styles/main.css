@@ -5507,6 +5507,44 @@ header {
         text-decoration: none; }
         header .logo h1 span a:hover {
           color: #fff; }
+  header .type-buttons {
+    margin-top: 15px;
+    float: right; }
+    header .type-buttons .btn {
+      padding: 6px 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid #fff;
+      color: #fff;
+      font-weight: 700;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      background-clip: padding-box;
+      /* stops bg color from leaking outside the border: */ }
+      header .type-buttons .btn:hover {
+        background-color: #fff;
+        color: grey; }
+  @media (max-width: 991px) {
+    header .form-container {
+      margin-bottom: 10px; } }
+  header .form-container .form-group input {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-clip: padding-box;
+    /* stops bg color from leaking outside the border: */
+    height: auto;
+    border: none; }
+  header .form-container .form-group button.btn {
+    display: block;
+    width: 100%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff; }
+    @media (max-width: 768px) {
+      header .form-container .form-group button.btn {
+        margin-top: 10px; } }
+    header .form-container .form-group button.btn:hover {
+      background-color: #fff;
+      color: #396B76; }
   header nav ul {
     list-style-type: none;
     margin: 25px 0 0 0; }
@@ -5520,31 +5558,6 @@ header {
   border-radius: 2px;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */ }
-
-@media (max-width: 991px) {
-  .form-container {
-    margin-bottom: 10px; } }
-
-.form-container .form-group input {
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  background-clip: padding-box;
-  /* stops bg color from leaking outside the border: */
-  height: auto;
-  border: none; }
-
-.form-container .form-group button.btn {
-  display: block;
-  width: 100%;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #fff; }
-  @media (max-width: 768px) {
-    .form-container .form-group button.btn {
-      margin-top: 10px; } }
-  .form-container .form-group button.btn:hover {
-    background-color: #fff;
-    color: #396B76; }
 
 .place-info {
   margin: 15px 0; }
@@ -5561,15 +5574,6 @@ header {
   .current-place h2 {
     color: #fff;
     font-size: 1.7em; }
-
-    .google-map{
-      
-      width: 60%; 
-      height: 60%;
-      
-    }
-    
-    
 
 .current-weather {
   text-align: center;
@@ -5621,7 +5625,8 @@ header {
       font-weight: 500; }
     .detailed-weather .navigation .btn-group .active {
       background-color: #fff;
-      color: #396B76; }
+      color: #396B76;
+      z-index: 0; }
 
 .all-day-weather .element {
   background-color: rgba(255, 255, 255, 0.15);
@@ -5633,9 +5638,10 @@ header {
   /* stops bg color from leaking outside the border: */
   color: #fff;
   margin-bottom: 20px;
-  min-height: 290px; }
+  height: 320px; }
   .all-day-weather .element:hover {
-    background-color: rgba(255, 255, 255, 0.3); }
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer; }
   .all-day-weather .element .time {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
     .all-day-weather .element .time p {
@@ -5673,3 +5679,88 @@ footer {
       color: #fff; }
       footer ul li a:hover {
         color: #fff; }
+
+.map-container {
+  padding-top: 50px; }
+  .map-container .google-map {
+    height: 300px; }
+    .map-container .google-map .super-map-wrapper {
+      margin-top: 20px;
+      position: static !important; }
+
+.ReactModal__Content {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  left: 35% !important;
+  right: 35% !important;
+  position: relative;
+  height: 270px; }
+  .ReactModal__Content .close-modal {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .ReactModal__Content .close-modal:hover {
+      background-color: #343434;
+      color: whitesmoke; }
+
+.register-form h3 {
+  margin-top: 0 !important; }
+
+.register-form textarea {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  margin-top: 10px; }
+
+.comments {
+  border-top: 1px solid rgba(255, 255, 255, 0.2); }
+  .comments h2 {
+    color: whitesmoke; }
+  .comments .modal-btn {
+    border: 1px solid #fff;
+    background: none;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #fff;
+    min-width: 250px; }
+    .comments .modal-btn img {
+      width: 1em;
+      margin-top: -4px;
+      margin-right: 5px; }
+    .comments .modal-btn:hover {
+      background: #396B76;
+      color: #fff; }
+  .comments .comments-container .comment-element {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    padding: 10px 140px 10px 10px;
+    position: relative; }
+    .comments .comments-container .comment-element h5 {
+      color: #fff;
+      font-size: 1.3em; }
+    .comments .comments-container .comment-element p {
+      font-style: italic;
+      color: whitesmoke; }
+    .comments .comments-container .comment-element small {
+      color: antiquewhite;
+      margin-left: 20px; }
+    .comments .comments-container .comment-element .admin-controls {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 20px;
+      right: 0; }
+      .comments .comments-container .comment-element .admin-controls li .btn {
+        width: 100px;
+        margin-bottom: 10px;
+        font-size: .9em; }
+        .comments .comments-container .comment-element .admin-controls li .btn.btn-success {
+          background: none;
+          border: 1px solid #43a92d; }
+        .comments .comments-container .comment-element .admin-controls li .btn.btn-danger {
+          background: none;
+          border: 1px solid #ff514c; }
+        .comments .comments-container .comment-element .admin-controls li .btn:hover {
+          background: #fff;
+          color: #000; }

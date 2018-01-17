@@ -17,10 +17,8 @@ class Register extends Component {
 			emailData: '',
 			show: false,
 			showAlert: false
-
 		};
-
-
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	handleChangeName(e) {
 		this.setState({
@@ -37,17 +35,13 @@ class Register extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-
 		this.getEmailInfo(this.state.email);
-
 		//console.log(emailValid);
-
 	}
 
 	
 	handleValidEmail() {
 		const _this = this;
-		
 		
 		fire.database().ref("users")
 			.orderByChild("email")
@@ -77,7 +71,6 @@ class Register extends Component {
 	}
 
 	getEmailInfo = (email) => {
-
 		const _this = this;
 		axios.get(apiUrl + email)
 			.then(function (response) {
@@ -96,31 +89,38 @@ class Register extends Component {
 			.catch(function (error) {
 				console.log(error);
 			});
-
-
 	};
-
 
 
 
 	render() {
 		return (
-			<div>
-
-				<form onSubmit={this.handleSubmit.bind(this)} >
+			<div className="register-from">
+				<h3>Enter your details</h3>
+				{!this.state.show &&
+				<form className="form-horizontal" onSubmit={this.handleSubmit.bind(this)} >
 					<div className="form-group">
-						<div className="col-sm-5">
+						<div className="col-sm-12">
 							<input value={this.state.name} onChange={this.handleChangeName.bind(this)} type="text" className="form-control" placeholder="Name" />
 						</div>
-						<div className="col-sm-5">
+					</div>
+
+					<div className="form-group">
+						<div className="col-sm-12">
 							<input value={this.state.email} onChange={this.handleChangeEmail.bind(this)} type="email" className="form-control" placeholder="Email" />
 						</div>
-						<div className="col-sm-2">
-							<button className="btn" type="submit">Submit</button>
+					</div>
+
+					<div className="form-group">
+						<div className="col-sm-12">
+							<button className="btn btn-success" type="submit">Submit</button>
 						</div>
 					</div>
 				</form>
-				{this.state.show && < RateComment name={this.state.name} email={this.state.email}/>}
+				}
+
+
+				{this.state.show && <RateComment name={this.state.name} email={this.state.email}/>}
 
 			</div>
 		);

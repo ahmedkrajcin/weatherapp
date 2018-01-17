@@ -9,9 +9,6 @@ const api = 'AIzaSyBaex8bjZOkeNlC8byP6OLfLP_2LNnYi38';
 export class StandardMap extends Component {
   constructor(props) {
     super(props);
-
-
-
   }
 
   static defaultProps = {
@@ -26,7 +23,6 @@ export class StandardMap extends Component {
   }
 
   render() {
-
 
     const apiKey = 'AIzaSyBaex8bjZOkeNlC8byP6OLfLP_2LNnYi38';
     const zoom = 10;
@@ -44,26 +40,20 @@ export class StandardMap extends Component {
 
 
     return (
-      <div className="container">
-        <div className="google-map" >
-
-          <Map
-            //apiKey={this.props.apiKey}
-            //style={style}
-            className="super-map-wrapper"
-            google={this.props.google}
-            center={{ lat: this.props.lat, lng: this.props.lon }}
-            onClick={this.mapClicked.bind()}
-            zoom={zoom}>
-            <Marker
-              position={{ lat: this.props.lat, lng: this.props.lon }} />
-            <Marker />
-          </Map>
-        </div>
+      <div className="google-map" >
+        <Map
+          //apiKey={this.props.apiKey}
+          //style={style}
+          className="super-map-wrapper"
+          google={this.props.google}
+          center={{ lat: this.props.lat, lng: this.props.lon }}
+          onClick={this.mapClicked.bind()}
+          zoom={zoom}>
+          <Marker
+            position={{ lat: this.props.lat, lng: this.props.lon }} />
+          <Marker />
+        </Map>
       </div>
-
-
-
     );
   }
 };

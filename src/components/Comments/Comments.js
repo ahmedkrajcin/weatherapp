@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Comment from '../Comment';
 import fire from '../../fire.js';
 
-class Admin extends Component {
+class Comments extends Component {
 
 	constructor(props) {
 		super(props);
@@ -24,11 +24,11 @@ class Admin extends Component {
 		return (
 			<div className="comments-container">
 				{
-					this.state.users.map(user => <Comment isAdmin={true} key={user.id} name={user.text.name} email={user.text.email} comment={user.text.comment} rating={user.text.rating} time={user.text.time}/>)
+					this.state.users.map(user => <Comment isAdmin={false} key={user.id} name={user.text.name} email={user.text.email} comment={user.text.comment} rating={user.text.rating} time={user.text.time}/>)
 				}
 			</div>
 		);
 	}
 }
 
-export default Admin;
+export default Comments;

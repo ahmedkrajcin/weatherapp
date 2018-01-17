@@ -15,6 +15,7 @@ class RateComment extends Component {
 			comment: '',
 			approved:false
 		};
+		this.handleSubmit1 = this.handleSubmit1.bind(this);
 	}
 
 	changeRating(newRating) {
@@ -24,12 +25,9 @@ class RateComment extends Component {
 	handleChangeComment(e) {
 		this.setState({
 			comment: e.target.value
-
 		});
 	}
-	handleSubmit1(e) {
-		e.preventDefault();
-
+	handleSubmit1() {
 		fire.database().ref('users').push({
 			email: this.props.email,
 			name: this.props.name,
@@ -37,9 +35,7 @@ class RateComment extends Component {
 			comment:this.state.comment,
 			time: moment().format('LLLL'),
 			approved:this.state.approved
-
 		});
-
 	}
 
 	render() {
@@ -47,24 +43,28 @@ class RateComment extends Component {
 			<div className="form-container">
 				<StarRatings
 					rating={this.state.rating}
+					starEmptyColor={'grey'}
+					starRatedColor={'#c9ac06'}
 					isSelectable={true}
 					isAggregateRating={false}
 					changeRating={this.changeRating.bind(this)}
 					numOfStars={5}
-					starWidthAndHeight={'40px'}
+					starWidthAndHeight={'30px'}
+
 				/>
-				<form onSubmit={this.handleSubmit1.bind(this)}  >
+				<form className="form-horizontal">
 					<div className="form-group">
-						<div className="col-sm-9">
-							<input value={this.state.comment} onChange={this.handleChangeComment.bind(this)} type="text" className="form-control" placeholder="Comment" />
+						<div className="col-sm-12">
+							<textarea value={this.state.comment} onChange={this.handleChangeComment.bind(this)} type="text" className="form-control" placeholder="Comment" />
 						</div>
+					</div>
+
+					<div className="form-group">
 						<div className="col-sm-3">
-							<button className="btn" type="submit">Submit</button>
+							<button className="final-submit btn btn-success" onClick={() => this.handleSubmit1()} type="button">Submit</button>
 						</div>
 					</div>
 				</form>
-
-
 			</div>
 		);
 	}

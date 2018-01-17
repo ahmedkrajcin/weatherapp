@@ -16,7 +16,7 @@ class Header extends Component {
 						</div>
 					</div>
 					<div className="col-sm-2">
-						<div className="d-inline-block btn-group btn-group-sm" data-toggle="buttons">
+						<div className="type-buttons btn-group btn-group-sm" data-toggle="buttons">
 							<label id="si" onClick={this.props.handleClick.bind(this)} className="btn btn-primary ">
 								<input type="radio" name="options" ></input>
 								&deg; C

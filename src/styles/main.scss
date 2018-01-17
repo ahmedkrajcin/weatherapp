@@ -97,6 +97,59 @@ header {
 		}
 	}
 
+	.type-buttons {
+		margin-top: 15px;
+		float: right;
+
+		.btn {
+			padding: 6px 15px;
+			background-color: rgba(255, 255, 255, .1);
+			border: 1px solid #fff;
+			color: #fff;
+			font-weight: 700;
+			@include border-radius(0);
+
+			&:hover {
+				background-color: #fff;
+				color: grey;
+			}
+		}
+	}
+
+	.form-container {
+		@media (max-width: 991px) {
+			margin-bottom: 10px;
+		}
+
+		.form-group {
+			input {
+				@include border-radius(2px);
+				height: auto;
+				border: none;
+			}
+
+			button {
+				&.btn {
+					display: block;
+					width: 100%;
+					background: none;
+					border: 1px solid rgba(255, 255, 255, .5);
+					color: #fff;
+
+					@media (max-width: 768px) {
+						margin-top: 10px;
+					}
+
+
+					&:hover {
+						background-color: #fff;
+						color: $green1;
+					}
+				}
+			}
+		}
+	}
+
 	nav {
 		ul {
 			list-style-type: none;
@@ -119,40 +172,7 @@ header {
 	@include border-radius(2px)
 }
 
-.form-container {
-	@media (max-width: 991px) {
-		margin-bottom: 10px;
-	}
 
-
-	.form-group {
-		input {
-			@include border-radius(2px);
-			height: auto;
-			border: none;
-		}
-
-		button {
-			&.btn {
-				display: block;
-				width: 100%;
-				background: none;
-				border: 1px solid rgba(255, 255, 255, .5);
-				color: #fff;
-
-				@media (max-width: 768px) {
-					margin-top: 10px;
-				}
-
-
-				&:hover {
-					background-color: #fff;
-					color: $green1;
-				}
-			}
-		}
-	}
-}
 
 .place-info {
 	margin: 15px 0;
@@ -244,6 +264,7 @@ header {
 			.active {
 				background-color: #fff;
 				color: $green1;
+				z-index: 0;
 			}
 		}
 	}
@@ -258,10 +279,11 @@ header {
 		@include border-radius(2px);
 		color: #fff;
 		margin-bottom: 20px;
-		min-height: 290px;
+		height: 320px;
 
 		&:hover {
 			background-color: rgba(255,255,255,.3);
+			cursor: pointer;
 		}
 
 		.time {
@@ -324,6 +346,133 @@ footer {
 
 				&:hover {
 					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+.map-container {
+	padding-top: 50px;
+	.google-map {
+		height: 300px;
+
+		.super-map-wrapper {
+			margin-top: 20px;
+			position: static !important;
+		}
+	}
+}
+
+.ReactModal__Content {
+	background-color: rgba(255, 255, 255, .8) !important;
+	left: 35% !important;
+	right: 35% !important;
+	position: relative;
+	height: 270px;
+
+	.close-modal {
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		&:hover {
+			background-color: #343434;
+			color: whitesmoke;
+		}
+	}
+
+
+}
+
+.register-form {
+	h3 {
+		margin-top: 0 !important;
+	}
+
+	textarea {
+		@include border-radius(0);
+		margin-top: 10px;
+	}
+}
+
+.comments {
+	border-top: 1px solid rgba(255, 255, 255, .2);
+	h2 {
+		color: whitesmoke;
+	}
+
+	.modal-btn {
+		border: 1px solid #fff;
+		background: none;
+		font-size: 1.1em;
+		font-weight: 700;
+		color: #fff;
+		min-width: 250px;
+
+		img {
+			width: 1em;
+			margin-top: -4px;
+			margin-right: 5px;
+		}
+		
+		&:hover {
+			background: $green1;
+			color: #fff;
+		}
+	}
+
+	.comments-container {
+		.comment-element {
+			border-bottom: 1px solid rgba(255, 255, 255, .1);
+			margin-bottom: 10px;
+			padding: 10px 140px 10px 10px;
+			position: relative;
+
+			h5 {
+				color: #fff;
+				font-size: 1.3em;
+			}
+
+			p {
+				font-style: italic;
+				color: whitesmoke;
+			}
+
+			small {
+				color: antiquewhite;
+				margin-left: 20px;
+			}
+
+			.admin-controls {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top: 20px;
+				right: 0;
+
+				li {
+					.btn {
+						width: 100px;
+						margin-bottom: 10px;
+						font-size: .9em;
+
+						&.btn-success {
+							background: none;
+							border: 1px solid #43a92d;
+						}
+
+						&.btn-danger {
+							background: none;
+							border: 1px solid #ff514c;
+						}
+
+						&:hover {
+							background: #fff;
+							color: #000;
+						}
+					}
 				}
 			}
 		}

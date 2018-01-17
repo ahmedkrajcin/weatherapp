@@ -12,9 +12,18 @@ import rain from '../../images/rain.png';
 import sleet from '../../images/sleet.png';
 import snow from '../../images/snow.png';
 import wind from '../../images/wind.png';
-
-
+import ReactModal from 'react-modal';
+import CurrentWeather from '../CurrentWeather';
 class TodayWeather extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			dayDetailsModalActive: false,
+			tempModalData: []
+		}; // <- set up react state
+	}
+
 	_fahrenheitToCelcius = (data) => {
 		return (data - 32) * 5/9
 	};
@@ -76,13 +85,27 @@ class TodayWeather extends Component {
 		  return 'mph'
 	};
 
+	_openDayDetailsModal(data) {
+		this.setState({
+			dayDetailsModalActive: true,
+			tempModalData: data
+		})
+	}
+
+	_closeDayDetailsModal() {
+		this.setState({
+			dayDetailsModalActive: false,
+			tempModalData: []
+		});
+	}
+
 	render() {
 		console.log(this.props);
 		const {units} =this.props.dailyData.flags;
 		let allItems = this.props.dailyData.daily.data.map((result, id) => {
 			return (
 				<div key={id} className="col-md-3">
-					<div className="element">
+					<div className="element" onClick={() => this._openDayDetailsModal(result)}>
 						<div className="time">
 							<p>
 								<i className="fa fa-clock-o" aria-hidden="true" /> {moment.unix(result.time).format('dddd')}
@@ -106,6 +129,13 @@ class TodayWeather extends Component {
 				<div className="row">
 					{allItems}
 				</div>
+
+				<ReactModal
+					isOpen={this.state.dayDetailsModalActive}
+				>
+					<button className="close-modal btn" onClick={this._closeDayDetailsModal.bind(this)}>X</button>
+					<CurrentWeather currentWeather={this.state.tempModalData} />
+				</ReactModal>
 			</div>
 		);
 	}
