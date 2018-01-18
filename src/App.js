@@ -221,9 +221,9 @@ class App extends Component {
 								</div>
 
 								<div className="col-md-9">
-								{this.state.showAdmin==false&&
+								{this.state.showAdmin==false &&
 									<Comments/>}
-									{this.state.showAdmin==false&&
+									{this.state.showAdmin==true &&
 									<Admin />}
 								</div>
 							</div>
@@ -234,7 +234,7 @@ class App extends Component {
 							contentLabel="Minimal Modal Example"
 						>
 							<button className="close-modal btn" onClick={this.closeRegisterModal.bind(this)}>X</button>
-							<Register showAdmin={this.handleAdmin.bind(this)}/>
+							<Register handleAdmin={this.handleAdmin.bind(this)} closeModal={this.closeRegisterModal.bind(this)}/>
 						</ReactModal>
 					</div>
 				</div>

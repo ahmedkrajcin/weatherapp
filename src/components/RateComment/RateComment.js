@@ -36,6 +36,10 @@ class RateComment extends Component {
 			time: moment().format('LLLL'),
 			approved:this.state.approved
 		});
+		
+		alert("You have successfully commented")
+		this.props.close();
+		
 	}
 
 	render() {

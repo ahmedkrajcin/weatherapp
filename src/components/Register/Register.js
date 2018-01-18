@@ -36,14 +36,20 @@ class Register extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		const _this=this;
 		if(this.state.email==='ahmed@admin.com'&&this.state.name==='admin'){
-         this.props.showAdmin.bind(this);
+		 _this.props.handleAdmin();
+		 this.props.closeModal();
 		}
 		else{
 
 		this.getEmailInfo(this.state.email);
 	}
 		//console.log(emailValid);
+	}
+	closeModal(){
+		this.props.closeModal();
+		
 	}
 
 	
@@ -127,7 +133,7 @@ class Register extends Component {
 				}
 
 
-				{this.state.show && <RateComment name={this.state.name} email={this.state.email}/>}
+				{this.state.show && <RateComment close={this.closeModal.bind(this)} name={this.state.name} email={this.state.email}/>}
 
 			</div>
 		);
