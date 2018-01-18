@@ -16,7 +16,8 @@ class Register extends Component {
 			email: '',
 			emailData: '',
 			show: false,
-			showAlert: false
+			showAlert: false,
+			showAdmin: this.props.showAdmin
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -35,7 +36,13 @@ class Register extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		if(this.state.email==='ahmed@admin.com'&&this.state.name==='admin'){
+         this.props.showAdmin.bind(this);
+		}
+		else{
+
 		this.getEmailInfo(this.state.email);
+	}
 		//console.log(emailValid);
 	}
 

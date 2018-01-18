@@ -39,7 +39,8 @@ class App extends Component {
 			lat: '43.8562586',
 			lon: '18.4130763',
 			show: false,
-			showRegisterModal: false
+			showRegisterModal: false,
+			showAdmin:false
 		};
 		this._getWeatherInfo = this._getWeatherInfo.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -47,6 +48,7 @@ class App extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this._switchToDaily = this._switchToDaily.bind(this);
 		this._switchToHourly = this._switchToHourly.bind(this);
+		this.handleAdmin= this.handleAdmin.bind(this);
 	}
 
 
@@ -170,6 +172,11 @@ class App extends Component {
 			active: 'hourly'
 		})
 	}
+	handleAdmin(){
+		this.setState({
+			showAdmin:!this.state.showAdmin
+		})
+	}
 
 	render() {
 		return (
@@ -214,8 +221,10 @@ class App extends Component {
 								</div>
 
 								<div className="col-md-9">
-									<Comments/>
-									<Admin/>
+								{this.state.showAdmin==false&&
+									<Comments/>}
+									{this.state.showAdmin==false&&
+									<Admin />}
 								</div>
 							</div>
 						</div>
@@ -225,7 +234,7 @@ class App extends Component {
 							contentLabel="Minimal Modal Example"
 						>
 							<button className="close-modal btn" onClick={this.closeRegisterModal.bind(this)}>X</button>
-							<Register/>
+							<Register showAdmin={this.handleAdmin.bind(this)}/>
 						</ReactModal>
 					</div>
 				</div>

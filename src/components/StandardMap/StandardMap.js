@@ -21,6 +21,9 @@ export class StandardMap extends Component {
   
 
   }
+  _onClick(obj){
+    console.log(obj.lat);
+    }
 
   render() {
 
@@ -37,13 +40,15 @@ export class StandardMap extends Component {
     console.log(this.props.lat);
     console.log(this.props.lon);
 
-
+    
+  
 
     return (
       <div className="google-map" >
         <Map
           //apiKey={this.props.apiKey}
           //style={style}
+          onClick={this._onClick.bind(this)} 
           className="super-map-wrapper"
           google={this.props.google}
           center={{ lat: this.props.lat, lng: this.props.lon }}
