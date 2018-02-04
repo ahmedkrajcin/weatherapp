@@ -18,21 +18,25 @@ class Admin extends Component {
 		this.setState({
 			users:u
 		})
-		console.log(this.state.users);
+		console.log(this.state.users)
 		
 		
 		let _this = this;
 		let user = fire.database().ref('users').orderByKey();
-		user.on('value', snapshot => {
+		user.once('value', snapshot => {
 			snapshot.forEach(childSnapshot => {
-				const users = { text: childSnapshot.val(), key:childSnapshot.key };
-				_this.setState({ users: [users].concat(_this.state.users) });
+				const user1 = { text: childSnapshot.val(), key:childSnapshot.key };
+				_this.setState({ users: [user1].concat(_this.state.users) });
 			});
 			/* Update React state when message is added at Firebase Database */
 			//const users = { text: snapshot.val(), key:snapshot.key, id: snapshot.exportVal() };
 			//_this.setState({ users: [users].concat(_this.state.users) });
 			console.log(_this.state.users)
+		
 		});
+		
+		
+		
 		
 		//this.setState(this.state);
 			//console.log(snapshot.key)
@@ -41,18 +45,29 @@ class Admin extends Component {
 	
     approveComment(id){
 		const u=[];
-		this.state.users.length
 		this.setState({
 			users:u
 		})
 		var ref = fire.database().ref('users');
-		//fire.database.ref('users/' + id).update({approved: true});
 		ref.child(id).update({ approved: true });
+		let _this = this;
+		let user = fire.database().ref('users').orderByKey();
+		user.once('value', snapshot => {
+			snapshot.forEach(childSnapshot => {
+				const user1 = { text: childSnapshot.val(), key:childSnapshot.key };
+				_this.setState({ users: [user1].concat(_this.state.users) });
+			});
+			/* Update React state when message is added at Firebase Database */
+			//const users = { text: snapshot.val(), key:snapshot.key, id: snapshot.exportVal() };
+			//_this.setState({ users: [users].concat(_this.state.users) });
+			console.log(_this.state.users)
+			
+		});
 		
 		//window.location.reload();
 		//this.forceUpdate();
 		
-		this.componentWillMount();
+		//this.componentWillMount();
         //this.render();
 	}
 	handleRemove(id) {
@@ -61,10 +76,24 @@ class Admin extends Component {
 			users:u
 		})
 		console.log(this.state.users)
+
 		 fire.database().ref('users').child(id).remove();
+
+		 
+		 let _this = this;
+		 let user = fire.database().ref('users').orderByKey();
+		 user.once('value', snapshot => {
+			 snapshot.forEach(childSnapshot => {
+				 const user1 = { text: childSnapshot.val(), key:childSnapshot.key };
+				 _this.setState({ users: [user1].concat(_this.state.users) });
+			 });
+			 /* Update React state when message is added at Firebase Database */
+			 //const users = { text: snapshot.val(), key:snapshot.key, id: snapshot.exportVal() };
+			 //_this.setState({ users: [users].concat(_this.state.users) });
+			 console.log(_this.state.users)
+		 });
 		// window.location.reload();
 		
-		this.componentWillMount();
 		//this.render();
 		
 	}

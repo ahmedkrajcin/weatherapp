@@ -37,7 +37,7 @@ class Register extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const _this=this;
-		if(this.state.email==='ahmed@admin.com'&&this.state.name==='admin'){
+		if(this.state.email==='a@a'&&this.state.name==='a'){
 		 _this.props.handleAdmin();
 		 this.props.closeModal();
 		}

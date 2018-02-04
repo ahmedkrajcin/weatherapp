@@ -237,15 +237,22 @@ class App extends Component {
 							<div className="row">
 								<div className="col-md-3">
 									<h2>Comments</h2>
-									<button className="btn modal-btn" onClick={() => this.openRegisterModal()}>
+									{this.state.showAdmin == false &&
+										<button className="btn modal-btn" onClick={() => this.openRegisterModal()}>
 										<img src={star} alt="" />Rate the forecast
-									</button>
+									</button>}
+									{this.state.showAdmin == true &&
+										<button className="btn modal-btn" onClick={() => window.location.reload()}>
+										<img src={star} alt="" />Exit Admin
+									</button>}
+
+									
 								</div>
 
 								<div className="col-md-9">
-									{this.state.showAdmin == true &&
-										<Comments />}
 									{this.state.showAdmin == false &&
+										<Comments />}
+									{this.state.showAdmin == true &&
 										<Admin />}
 								</div>
 							</div>
