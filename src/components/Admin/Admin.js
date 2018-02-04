@@ -41,7 +41,7 @@ class Admin extends Component {
 	
     approveComment(id){
 		const u=[];
-		this.state.users.length=0;
+		this.state.users.length
 		this.setState({
 			users:u
 		})
