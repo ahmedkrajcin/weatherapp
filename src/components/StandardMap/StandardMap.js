@@ -61,6 +61,11 @@ export class StandardMap extends Component {
           google={this.props.google}
           center={{ lat: this.props.lat, lng: this.props.lon }}
           zoom={zoom}
+          onMouseover={(e) => { console.log('2') }}
+          
+           
+        
+          
           >
           
           <Marker
@@ -70,9 +75,15 @@ export class StandardMap extends Component {
             title={'Drag the marker to change a location'}
             draggable={true}
             onDragend={this.onMarkerMoved.bind(this)}
-          />
+           
+          >
+          <InfoWindow 
+          visible={true}>
+            <div>
+              <h1>somdsfsd</h1>
+            </div>
+        </InfoWindow></Marker>
 
-          <Marker />
           
         </Map>
       </div>
