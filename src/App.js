@@ -40,7 +40,7 @@ class App extends Component {
 			lon: '18.4130763',
 			show: false,
 			showRegisterModal: false,
-			showAdmin:false
+			showAdmin: false
 		};
 		this._getWeatherInfo = this._getWeatherInfo.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -48,7 +48,7 @@ class App extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this._switchToDaily = this._switchToDaily.bind(this);
 		this._switchToHourly = this._switchToHourly.bind(this);
-		this.handleAdmin= this.handleAdmin.bind(this);
+		this.handleAdmin = this.handleAdmin.bind(this);
 	}
 
 
@@ -117,7 +117,6 @@ class App extends Component {
 	componentWillMount() {
 		ReactModal.setAppElement('body')
 	}
-
 	_getGeoInfo = (cityName) => {
 
 		const _this = this;
@@ -144,6 +143,29 @@ class App extends Component {
 		// 	lon: _this.state.cityData.results.geometry.location.lng
 		// })
 		// Trigger weather search
+	};
+	_getMarkerInfo = (lat, lng) => {
+
+		const _this = this;
+
+		axios.get('http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ','+lng+'&language=en')
+			.then(function (response) {
+				_this.setState({
+					cityData: response.data,
+					lat: response.data.results[0].geometry.location.lat,
+					lon: response.data.results[0].geometry.location.lng,
+					place: response.data.results[0].formatted_address
+				});
+
+				_this._getWeatherInfo(response.data.results[0].geometry.location.lat, response.data.results[0].geometry.location.lng)
+
+				console.log(response.data.results[0].geometry.location.lat)
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+
+		
 	};
 
 	_getWeatherInfo = (lat, lng) => {
@@ -172,9 +194,9 @@ class App extends Component {
 			active: 'hourly'
 		})
 	}
-	handleAdmin(){
+	handleAdmin() {
 		this.setState({
-			showAdmin:!this.state.showAdmin
+			showAdmin: !this.state.showAdmin
 		})
 	}
 
@@ -194,7 +216,7 @@ class App extends Component {
 							</div>
 							<div className="col-sm-5">
 								<div className="map-container">
-									<StandardMap {...this.state} />
+									<StandardMap {...this.state} updateWeather={this._getMarkerInfo.bind(this)} />
 								</div>
 							</div>
 						</div>
@@ -216,15 +238,15 @@ class App extends Component {
 								<div className="col-md-3">
 									<h2>Comments</h2>
 									<button className="btn modal-btn" onClick={() => this.openRegisterModal()}>
-										<img src={star} alt=""/>Rate the forecast
+										<img src={star} alt="" />Rate the forecast
 									</button>
 								</div>
 
 								<div className="col-md-9">
-								{this.state.showAdmin==false &&
-									<Comments/>}
-									{this.state.showAdmin==true &&
-									<Admin />}
+									{this.state.showAdmin == true &&
+										<Comments />}
+									{this.state.showAdmin == false &&
+										<Admin />}
 								</div>
 							</div>
 						</div>
@@ -234,7 +256,7 @@ class App extends Component {
 							contentLabel="Minimal Modal Example"
 						>
 							<button className="close-modal btn" onClick={this.closeRegisterModal.bind(this)}>X</button>
-							<Register handleAdmin={this.handleAdmin.bind(this)} closeModal={this.closeRegisterModal.bind(this)}/>
+							<Register handleAdmin={this.handleAdmin.bind(this)} closeModal={this.closeRegisterModal.bind(this)} />
 						</ReactModal>
 					</div>
 				</div>

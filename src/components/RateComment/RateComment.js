@@ -15,7 +15,7 @@ class RateComment extends Component {
 			comment: '',
 			approved:false
 		};
-		this.handleSubmit1 = this.handleSubmit1.bind(this);
+		//this.Submit1 = this.Submit1.bind(this);
 	}
 
 	changeRating(newRating) {
@@ -27,7 +27,7 @@ class RateComment extends Component {
 			comment: e.target.value
 		});
 	}
-	handleSubmit1() {
+	Submit1() {
 		fire.database().ref('users').push({
 			email: this.props.email,
 			name: this.props.name,
@@ -36,9 +36,9 @@ class RateComment extends Component {
 			time: moment().format('LLLL'),
 			approved:this.state.approved
 		});
-		
-		alert("You have successfully commented")
 		this.props.close();
+		alert("You have successfully commented")
+		
 		
 	}
 
@@ -65,7 +65,7 @@ class RateComment extends Component {
 
 					<div className="form-group">
 						<div className="col-sm-3">
-							<button className="final-submit btn btn-success" onClick={() => this.handleSubmit1()} type="button">Submit</button>
+							<button className="final-submit btn btn-success" onClick={() => this.Submit1()} type="button">Submit</button>
 						</div>
 					</div>
 				</form>

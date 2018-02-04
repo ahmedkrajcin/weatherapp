@@ -3,7 +3,20 @@ import StarRatings from 'react-star-ratings';
 
 
 class Comment extends Component {
+	constructor(props) {
+		super(props);
+		this.approveComment=this.approveComment.bind(this);
+		this.handleRemove=this.handleRemove.bind(this);
+	}
 
+    approveComment(){
+		
+    this.props.approveComment(this.props.id );
+
+	}
+	handleRemove(){
+		this.props.handleRemove(this.props.id);
+	}
 	render() {
 		return (
 			<div className="comment-element">
@@ -11,13 +24,14 @@ class Comment extends Component {
 					this.props.isAdmin &&
 					<ul className="admin-controls">
 						<li>
-							<button className="btn btn-success">
+							{!this.props.approved && 
+							<button onClick={this.approveComment} className="btn btn-success">
 								Approve
-							</button>
+							</button>}
 						</li>
 
 						<li>
-							<button className="btn btn-danger">
+							<button onClick={this.handleRemove} className="btn btn-danger">
 								Delete
 							</button>
 						</li>

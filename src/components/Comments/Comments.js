@@ -11,13 +11,13 @@ class Comments extends Component {
 
 	componentWillMount() {
 		let _this = this;
-		let users = fire.database().ref('users').orderByKey().limitToLast(100);
+		let users = fire.database().ref('users').orderByChild("approved").equalTo(true);
 		users.on('child_added', snapshot => {
 			/* Update React state when message is added at Firebase Database */
 			let users = { text: snapshot.val(), id: snapshot.key };
-			this.setState({ users: [users].concat(this.state.users) });
-			console.log(_this.state.users)
-		});
+			_this.setState({ users: [users].concat(this.state.users) });
+			
+		});console.log(_this.state.users)
 	}
 
 	render() {

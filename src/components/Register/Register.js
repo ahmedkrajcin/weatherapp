@@ -45,7 +45,7 @@ class Register extends Component {
 
 		this.getEmailInfo(this.state.email);
 	}
-		//console.log(emailValid);
+		console.log("register handle");
 	}
 	closeModal(){
 		this.props.closeModal();
@@ -59,7 +59,7 @@ class Register extends Component {
 		fire.database().ref("users")
 			.orderByChild("email")
 			.equalTo(this.state.email)
-			.on('value', function (snapshot) {
+			.once('value', function (snapshot) {
 				if (snapshot.val() === null) {
 					console.log('Email is not present');
 					_this.setState({
