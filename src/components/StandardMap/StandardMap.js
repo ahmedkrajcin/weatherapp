@@ -77,12 +77,7 @@ export class StandardMap extends Component {
             onDragend={this.onMarkerMoved.bind(this)}
            
           >
-          <InfoWindow 
-          visible={true}>
-            <div>
-              <h1>somdsfsd</h1>
-            </div>
-        </InfoWindow></Marker>
+          </Marker>
 
           
         </Map>
