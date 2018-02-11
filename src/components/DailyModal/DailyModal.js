@@ -14,10 +14,7 @@ import wind from '../../images/wind.png';
 
 class CurrentWeather extends Component {
 
-	_fahrenheitToCelcius = (data) => {
-		return (data - 32) * 5 / 9
-	};
-
+	
 	_getIcon(type) {
 		if (type === 'clear-day') {
 			return clearDay
@@ -78,7 +75,7 @@ class CurrentWeather extends Component {
 
 
 	render() {
-		const { icon, summary, temperature, apparentTemperature, humidity, windSpeed, pressure, uvIndex, precipProbability, time } = this.props.currentWeather.currently;
+		const { icon, summary, temperatureMin, temperatureMax, humidity, windSpeed, pressure, uvIndex, precipProbability, time } = this.props.currentWeather.currently;
 		const humidity1 = humidity * 100;
 		const precip = precipProbability * 100;
 		console.log(this.props);
@@ -87,7 +84,9 @@ class CurrentWeather extends Component {
 		const { units } = this.props.currentWeather.flags;
 		return (
 			<div className="current-weather">
+            <h3>{moment.unix(time).format('dddd')}</h3>
 				<div className="row">
+                
 					<div className="col-sm-5">
 						<div className="icon-container">
 							<img src={this._getIcon(icon)} alt="Current Weather" />
@@ -105,7 +104,7 @@ class CurrentWeather extends Component {
 
 						<div className="description">
 							<p className="text-left">
-								<span className="larger-font">{parseFloat(temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}</span> Real Feel {parseFloat(apparentTemperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}
+								Min:<span className="larger-font">{parseFloat(temperatureMin).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}</span> Max:<span className="larger-font"> {parseFloat(temperatureMax).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}</span>
 							</p>
 							<p className="text-left">
 								{summary} </p>

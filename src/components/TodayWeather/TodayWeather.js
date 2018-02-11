@@ -14,6 +14,8 @@ import snow from '../../images/snow.png';
 import wind from '../../images/wind.png';
 import ReactModal from 'react-modal';
 import CurrentWeather from '../CurrentWeather';
+import DailyModal from '../DailyModal';
+
 class TodayWeather extends Component {
 
 	constructor(props) {
@@ -141,7 +143,7 @@ class TodayWeather extends Component {
 					isOpen={this.state.dayDetailsModalActive}
 				>
 					<button className="close-modal btn" onClick={this._closeDayDetailsModal.bind(this)}>X</button>
-					<CurrentWeather currentWeather={this.state.tempModalData} />
+					<DailyModal currentWeather={this.state.tempModalData} />
 				</ReactModal>
 			</div>
 		);
