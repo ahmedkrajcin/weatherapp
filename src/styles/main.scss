@@ -215,6 +215,10 @@ header {
 			border-bottom: 1px solid rgba(255,255,255,.1);
 			padding-bottom: 7px;
 			margin-bottom: 7px;
+
+			.larger-font {
+				font-size: 2em;
+			}
 		}
 	}
 
@@ -239,7 +243,11 @@ header {
 			font-size: 1.5em;
 			margin-top: 15px;
 			color: #fff;
+		}
 
+		.larger-font {
+			font-size: 2em;
+			color: #faff6b;
 		}
 	}
 }
@@ -476,5 +484,15 @@ footer {
 				}
 			}
 		}
+	}
+}
+
+.ReactModal__Content {
+	background: rgba(0, 0, 0, .8) !important;
+	width: 650px !important;
+	height: 450px !important;
+
+	h3 {
+		color: whitesmoke !important;
 	}
 }

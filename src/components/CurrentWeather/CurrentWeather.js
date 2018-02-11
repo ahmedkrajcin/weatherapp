@@ -102,17 +102,18 @@ class CurrentWeather extends Component {
 							<li>UV Index: {uvIndex}</li>
 							<li>Precipitation: {precip} %</li>
 						</ul>
+
+						<div className="description">
+							<p className="text-left">
+								<span className="larger-font">{parseFloat(temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}</span> Real Feel {parseFloat(apparentTemperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}
+							</p>
+							<p className="text-left">
+								{summary} </p>
+						</div>
+
 					</div>
 				</div>
-				<div className="description">
-					<p className="ng-binding">
-						{summary} </p>
-					<p className="temperature" >
-						{parseFloat(temperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}  Real Feel {parseFloat(apparentTemperature).toFixed(0)}<sup>o</sup>{this._getUnitsTemp(units)}
 
-
-					</p>
-				</div>
 			</div>
 		);
 	}
