@@ -61,7 +61,7 @@ export class StandardMap extends Component {
           google={this.props.google}
           center={{ lat: this.props.lat, lng: this.props.lon }}
           zoom={zoom}
-          onMouseover={(e) => { console.log('2') }}
+         
           
            
         

@@ -20,7 +20,10 @@ class TodayWeather extends Component {
 		super(props);
 		this.state = {
 			dayDetailsModalActive: false,
-			tempModalData: []
+			tempModalData: {
+				currently:{},
+				flags:{}
+			}
 		}; // <- set up react state
 	}
 
@@ -88,14 +91,18 @@ class TodayWeather extends Component {
 	_openDayDetailsModal(data) {
 		this.setState({
 			dayDetailsModalActive: true,
-			tempModalData: data
+			tempModalData:{
+				currently: data,
+				flags:this.props.dailyData.flags
+			}
+			
 		})
 	}
 
 	_closeDayDetailsModal() {
 		this.setState({
 			dayDetailsModalActive: false,
-			tempModalData: []
+			tempModalData: {}
 		});
 	}
 
@@ -125,12 +132,12 @@ class TodayWeather extends Component {
 		});
 
 		return (
-			<div className="all-day-weather">
+			<div className="all-day-weather"  >
 				<div className="row">
 					{allItems}
 				</div>
 
-				<ReactModal
+				<ReactModal 
 					isOpen={this.state.dayDetailsModalActive}
 				>
 					<button className="close-modal btn" onClick={this._closeDayDetailsModal.bind(this)}>X</button>
