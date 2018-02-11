@@ -96,11 +96,11 @@ class CurrentWeather extends Component {
 
 					<div className="col-sm-7">
 						<ul>
-							<li>Humidity: {parseFloat(humidity1).toFixed(1)}%  </li>
+							<li>Humidity: {parseFloat(humidity1).toFixed(0)}%  </li>
 							<li>Wind: {windSpeed} {this._getUnitsWind(units)}</li>
 							<li>Pressure: {pressure}mb</li>
 							<li>UV Index: {uvIndex}</li>
-							<li>Precipitation: {precip} %</li>
+							<li>Precipitation: {parseFloat(precip).toFixed(0)} %</li>
 						</ul>
 
 						<div className="description">

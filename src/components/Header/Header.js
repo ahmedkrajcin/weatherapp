@@ -11,7 +11,7 @@ class Header extends Component {
 					<div className="col-sm-5">
 						<div className="logo">
 							<h1>
-								<img src={logo} alt="" />Ahmed Weather
+								<img src={logo} alt="" />IUS Weather
 							</h1>
 						</div>
 					</div>
